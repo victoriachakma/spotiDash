@@ -1,4 +1,39 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Timeline from "./components/Timeline";
+import ArtistLeaderboard from "./components/ArtistLeaderboard";
+import TasteEvol from "./components/TasteEvol";
+import ShareDonut from "./components/ShareDonut";
+import ActivityHeatMap from "./components/ActivityHeatMap";
+import CumulativeHours from "./components/CumulativeHours";
+
+function App() {
+  const [view, setView] = useState("artists");
+
+  return (
+    <div style={{ fontFamily: "sans-serif", padding: "20px" }}>
+      <h1>SpotiDash</h1>
+      <nav style={{ marginBottom: "20px" }}>
+        <button onClick={() => setView("timeline")}>Timeline</button>
+        <button onClick={() => setView("artists")}>Top Artists</button>
+        <button onClick={() => setView("taste")}>Taste Evolution</button>
+        <button onClick={() => setView("share")}>Listening Share</button>
+        <button onClick={() => setView("heatmap")}>Day & Time</button>
+        <button onClick={() => setView("cumulative")}>Cumulative Hours</button>
+      </nav>
+      {view === "timeline" && <Timeline />}
+      {view === "artists" && <ArtistLeaderboard />}
+      {view === "taste" && <TasteEvol />}
+      {view === "share" && <ShareDonut />}
+      {view === "heatmap" && <ActivityHeatMap />}
+      {view === "cumulative" && <CumulativeHours />}
+    </div>
+  )
+}
+
+export default App
+
+
+/* import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -32,4 +67,4 @@ function App() {
   )
 }
 
-export default App
+export default App */
